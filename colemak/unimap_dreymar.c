@@ -63,7 +63,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  To get, say, the Colemak-CAWS (CurlAngleWideSym) layout on ISO/ANSI, use the _###_AW keymap with
  *      ACTIVELAYOUT 5, CURLMOD 1 and SYMBOLKEYS 2/3 settings below. And CAPSBEHAVIOR 1 for Extend, of course!
  */
-#define UNIMAPLAYOUT(...)   UNIMAP_ANS_AW( __VA_ARGS__ )    /* AngleWide-ANSI keymap */
+#define UNIMAPLAYOUT(...)   UNIMAP_ISO_A_( __VA_ARGS__ )    /* Angle-ISO keymap (Colin: DH+Angle, no Wide) */
 
 /* NOTE: These enumerations won't work for precompiler directives? Maybe they aren't needed, but they look nice. ;-)    */
 enum mainlayouts    {
@@ -142,7 +142,7 @@ enum symbolkeys     {
  *  4  : Some keys are made four-level: AltGr+<key> sends Unicode glyphs (by OS specific input method)
  *  5  : DreymaR's ISO-Nor hack, moving some keys to make the Norwegian layout more like ANSI/US
  */
-#define SYMBOLKEYS      3                       /* SYM_WANS         */
+#define SYMBOLKEYS      0                       /* SYM_NONE (Colin: no Wide, no Sym mod) */
 
 enum capsbehaviors  {
     CAPS_CAPS       ,   /* CapsLock as its plain old self           */
@@ -281,6 +281,10 @@ enum macro_id {
 #else
 # define AC_FCap ACTION_KEY(KC_CAPS)                // FCap (Caps key) unchanged
 #endif      /* if CAPSBEHAVIOR */
+
+/* Colin: override FCap — tap=Backspace, hold=Extend1 (layer 2). Loses Ext2/Ext3 chording, don't care. */
+#undef  AC_FCap
+#define AC_FCap ACTION_LAYER_TAP_KEY(2, KC_BSPC)
 
 #if     STICKYMODS == 1
 # define AC_FLSh ACTION_MODS_ONESHOT(MOD_LSFT)      // FLSh (Left Shift key)  as sticky shift
@@ -554,7 +558,7 @@ enum macro_id {
      *  `-----------------------------------------------------------´   */
     TAB   ,  Q ,  W ,  F ,  P ,  B ,  J ,  L ,  U ,  Y ,FScl,FLBr,FRBr,   FBsl,   DEL ,END ,PGDN,    P7 , P8 , P9 ,PPLS,
     FCap   ,  A ,  R ,  S ,  T ,  G ,  M ,  N ,  E ,  I ,  O ,FQuo,FHsh,  ENT ,                      P4 , P5 , P6 ,PCMM,
-    FLSh ,FLgt,  Z ,  X ,  C ,  D ,  V ,  K ,  H ,COMM,DOT ,FSls, RO ,    FRSh,         UP ,         P1 , P2 , P3 ,PENT,
+    FLSh ,FLgt,  Z ,  X ,  C ,  D ,  V ,BSPC,  K ,  H ,COMM,DOT ,FSls, RO ,    FRSh,         UP ,         P1 , P2 , P3 ,PENT,
 # else
     /*  Standard Colemak (created by Shai Coleman, 2006)
      *  http://colemak.com
