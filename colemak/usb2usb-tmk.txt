@@ -47,7 +47,8 @@ What I get
   - Caps: tap = Backspace, hold = Extend (arrows/nav/editing on right hand, Ctrl/Shift on left home row)
   - Shift is sticky: tap Shift, then a letter -> Capital
   - ScrollLock: toggles back to plain QWERTY (for colleagues / emergencies); tap again to return
-  - Extend+` types DreymaR's own email footer macro (harmless; edit TYPESTR1 if wanted)
+  - Extend+` types DreymaR's own email footer macro (leftover demo; edit/remove TYPESTR1 if wanted).
+    Its special character uses a Windows-only Alt+numpad code, so on a Mac that bit comes out wrong. Ignore it.
 
 
 https://github.com/DreymaR/BigBagKbdTrixTMK
