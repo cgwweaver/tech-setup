@@ -16,6 +16,9 @@ Rebuild (only if unimap_dreymar.c changes; needs avr-gcc, e.g. Linux: apt instal
   cd tmk_keyboard/converter/usb_usb
   make -f Makefile.unimap KEYMAP=dreymar CONSOLE_ENABLE=no
   -> output: usb_usb_unimap_dreymar.hex
+  cp usb_usb_unimap_dreymar.hex ../../../colemak/usb_usb_cmk-dh-iso-angle.hex   # replace the prebuilt one
+  cd ../../..                                                                   # back to repo root
+  (run all of the above from the tech-setup repo root; don't commit tmk_keyboard/)
   (CONSOLE_ENABLE=no is REQUIRED - otherwise too big for the chip)
 
 Option A - QMK Toolbox (GUI, easiest)
@@ -28,9 +31,9 @@ Option A - QMK Toolbox (GUI, easiest)
 
 Option B - Terminal
   brew install dfu-programmer
-  (press the Hasu button first)
+  (from the tech-setup repo root; press the Hasu button first)
   dfu-programmer atmega32u4 erase --force
-  dfu-programmer atmega32u4 flash usb_usb_cmk-dh-iso-angle.hex
+  dfu-programmer atmega32u4 flash colemak/usb_usb_cmk-dh-iso-angle.hex
   dfu-programmer atmega32u4 reset
 
 Test on the Mac before taking it to work:
