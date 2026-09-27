@@ -8,9 +8,14 @@ Files in this folder:
   usb_usb_cmk-dh-iso-angle.hex     <- MY firmware (Colemak-DH, ISO Angle, no Wide)
   usb_usb_stock-qwerty-rescue.hex  <- Hasu's stock firmware (plain QWERTY) = undo button
 
-Built from unimap_dreymar.c + DreymaR's unimap_dreymar.h inside tmk/tmk_keyboard:
+Rebuild (only if unimap_dreymar.c changes; needs avr-gcc, e.g. Linux: apt install gcc-avr avr-libc binutils-avr):
+  git clone --recurse-submodules https://github.com/tmk/tmk_keyboard.git
+  cp colemak/unimap_dreymar.c tmk_keyboard/converter/usb_usb/
+  curl -L -o tmk_keyboard/converter/usb_usb/unimap_dreymar.h \
+    https://raw.githubusercontent.com/DreymaR/BigBagKbdTrixTMK/master/_myunimaps/unimap_dreymar.h
   cd tmk_keyboard/converter/usb_usb
   make -f Makefile.unimap KEYMAP=dreymar CONSOLE_ENABLE=no
+  -> output: usb_usb_unimap_dreymar.hex
   (CONSOLE_ENABLE=no is REQUIRED - otherwise too big for the chip)
 
 Option A - QMK Toolbox (GUI, easiest)
