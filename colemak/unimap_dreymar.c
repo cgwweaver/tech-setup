@@ -558,7 +558,8 @@ enum macro_id {
      *  `-----------------------------------------------------------´   */
     TAB   ,  Q ,  W ,  F ,  P ,  B ,  J ,  L ,  U ,  Y ,FScl,FLBr,FRBr,   FBsl,   DEL ,END ,PGDN,    P7 , P8 , P9 ,PPLS,
     FCap   ,  A ,  R ,  S ,  T ,  G ,  M ,  N ,  E ,  I ,  O ,FQuo,FHsh,  ENT ,                      P4 , P5 , P6 ,PCMM,
-    FLSh ,FLgt,  Z ,  X ,  C ,  D ,  V ,BSPC,  K ,  H ,COMM,DOT ,FSls, RO ,    FRSh,         UP ,         P1 , P2 , P3 ,PENT,
+    /*  Colin: 2nd slot (FLgt) -> BSPC. The ISO_A_ keymap moves this slot onto the physical B key, so B = Backspace.  */
+    FLSh ,BSPC,  Z ,  X ,  C ,  D ,  V ,  K ,  H ,COMM,DOT ,FSls, RO ,    FRSh,         UP ,         P1 , P2 , P3 ,PENT,
 # else
     /*  Standard Colemak (created by Shai Coleman, 2006)
      *  http://colemak.com

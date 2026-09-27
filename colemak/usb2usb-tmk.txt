@@ -2,7 +2,44 @@ only very few .hex prebuilt Dreymar
 
 ease: linux > mac > windows
 
-Mac:xxx
+Mac: flash the prebuilt .hex (no compiling needed on the Mac)
+-------------------------------------------------------------
+Files in this folder:
+  usb_usb_cmk-dh-iso-angle.hex     <- MY firmware (Colemak-DH, ISO Angle, no Wide)
+  usb_usb_stock-qwerty-rescue.hex  <- Hasu's stock firmware (plain QWERTY) = undo button
+
+Built from unimap_dreymar.c + DreymaR's unimap_dreymar.h inside tmk/tmk_keyboard:
+  cd tmk_keyboard/converter/usb_usb
+  make -f Makefile.unimap KEYMAP=dreymar CONSOLE_ENABLE=no
+  (CONSOLE_ENABLE=no is REQUIRED - otherwise too big for the chip)
+
+Option A - QMK Toolbox (GUI, easiest)
+  1. Install: https://github.com/qmk/qmk_toolbox/releases (.pkg) or `brew install --cask qmk-toolbox`
+  2. Open QMK Toolbox -> "Open" -> pick usb_usb_cmk-dh-iso-angle.hex. MCU = atmega32u4.
+  3. Plug Hasu into the Mac (keyboard unplugged from it is safest).
+  4. Press the small button on the Hasu -> LED goes off = bootloader mode.
+     Toolbox log should say "Atmel DFU device connected".
+  5. Click "Flash". Wait for "Flash complete". Replug the Hasu.
+
+Option B - Terminal
+  brew install dfu-programmer
+  (press the Hasu button first)
+  dfu-programmer atmega32u4 erase --force
+  dfu-programmer atmega32u4 flash usb_usb_cmk-dh-iso-angle.hex
+  dfu-programmer atmega32u4 reset
+
+Test on the Mac before taking it to work:
+  keyboard -> Hasu -> computer. Mac input source must be plain "U.S." (or ABC).
+  Work computer must be set to plain US English keyboard layout too
+  (Canadian French/CSA -> symbols come out wrong, letters mostly OK).
+
+What I get
+  - Letters: Colemak-DH. ISO Angle = bottom-left row shifted one key left
+    (extra ISO key = Z, physical Z = X, X = C, C = D, V = V, physical B = Backspace)
+  - Caps: tap = Backspace, hold = Extend (arrows/nav/editing on right hand, Ctrl/Shift on left home row)
+  - Shift is sticky: tap Shift, then a letter -> Capital
+  - ScrollLock: toggles back to plain QWERTY (for colleagues / emergencies); tap again to return
+  - Extend+` types DreymaR's own email footer macro (harmless; edit TYPESTR1 if wanted)
 
 
 https://github.com/DreymaR/BigBagKbdTrixTMK
