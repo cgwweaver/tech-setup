@@ -1,12 +1,11 @@
-only very few .hex prebuilt Dreymar
-
-ease: linux > mac > windows
 
 Mac: flash the prebuilt .hex (no compiling needed on the Mac)
 -------------------------------------------------------------
+
 Files in this folder:
   usb_usb_cmk-dh-iso-angle.hex     <- MY firmware (Colemak-DH, ISO Angle, no Wide)
   usb_usb_stock-qwerty-rescue.hex  <- Hasu's stock firmware (plain QWERTY) = undo button
+
 
 Rebuild (only if unimap_dreymar.c changes; needs avr-gcc, e.g. Linux: apt install gcc-avr avr-libc binutils-avr):
   git clone --recurse-submodules https://github.com/tmk/tmk_keyboard.git
@@ -20,6 +19,7 @@ Rebuild (only if unimap_dreymar.c changes; needs avr-gcc, e.g. Linux: apt instal
   cd ../../..                                                                   # back to repo root
   (run all of the above from the tech-setup repo root; don't commit tmk_keyboard/)
   (CONSOLE_ENABLE=no is REQUIRED - otherwise too big for the chip)
+
 
 Option A - QMK Toolbox (GUI, easiest)
   1. Install: https://github.com/qmk/qmk_toolbox/releases (.pkg) or `brew install --cask qmk-toolbox`
@@ -36,10 +36,12 @@ Option B - Terminal
   dfu-programmer atmega32u4 flash colemak/usb_usb_cmk-dh-iso-angle.hex
   dfu-programmer atmega32u4 reset
 
+
 Test on the Mac before taking it to work:
   keyboard -> Hasu -> computer. Mac input source must be plain "U.S." (or ABC).
   Work computer must be set to plain US English keyboard layout too
   (Canadian French/CSA -> symbols come out wrong, letters mostly OK).
+
 
 What I get
   - Letters: Colemak-DH. ISO Angle = bottom-left row shifted one key left
@@ -51,10 +53,24 @@ What I get
     Its special character uses a Windows-only Alt+numpad code, so on a Mac that bit comes out wrong. Ignore it.
 
 
+==unsure if want:
+shift: normal hold works too?
+caps-hold: want this as backspace too?
+physical B key: want anything else instead?! (French accents?!)
+
+
+
+if ever want to see/compare to Dreymar's,
+see tag in this repo: "Dreymar"
+
+
 https://github.com/DreymaR/BigBagKbdTrixTMK
 
+only very few .hex prebuilt Dreymar
+
+ease: linux > mac > windows
 
 
 Pulled unimap_dreymar.c on 2026-Apr-11:
-
 https://github.com/DreymaR/BigBagKbdTrixTMK/blob/master/_myunimaps%2Funimap_dreymar.c
+
