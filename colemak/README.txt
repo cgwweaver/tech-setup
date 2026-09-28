@@ -56,7 +56,21 @@ What I get
 ==unsure if want:
 shift: normal hold works too?
 caps-hold: want this as backspace too?
-physical B key: want anything else instead?! (French accents?!)
+
+scrollock=QWERTY: good for now/getting back into Colemak.
+  later might want turn on/off extend behaviour?
+
+physical B key: want anything else instead?
+Caps+`: want anything else instead?
+
+
+might want:
+%>%!!? another |> or <-? or is.na??
+French accents
+
+turn on CAPS how? (so rarely rarely need though...
+  except occasionally SAS variable names?)
+  liked out Shift+Caps...
 
 
 
