@@ -65,8 +65,17 @@ Caps+`: want anything else instead?
 
 
 might want:
-%>%!!? another |> or <-? or is.na??
-French accents
+
+Fr accents, might occ type french or Quebecois colleagues
+names' François andré Hélène etc not many à or ô in QC names?
+More é bit of ç and tiny bit è??
+
+(Or shortcut rstudio things?)
+Esc - not possible shortcut bc not text entering?!
+%>% or better %.>%?? or over . prefer \(.) or d, .d?
+another |> or <-? or is.na??
+[]{}~.,
+You rank
 
 turn on CAPS how? (so rarely rarely need though...
   except occasionally SAS variable names?)
