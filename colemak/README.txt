@@ -1,3 +1,99 @@
-colemak dreymar PR
-iso-dh
-https://github.com/cgwweaver/tech-setup/pull/1/changes
+
+Mac: flash the prebuilt .hex (no compiling needed on the Mac)
+-------------------------------------------------------------
+
+Files in this folder:
+  usb_usb_cmk-dh-iso-angle.hex     <- MY firmware (Colemak-DH, ISO Angle, no Wide)
+  usb_usb_stock-qwerty-rescue.hex  <- Hasu's stock firmware (plain QWERTY) = undo button
+
+
+Rebuild (only if unimap_dreymar.c changes; needs avr-gcc, e.g. Linux: apt install gcc-avr avr-libc binutils-avr):
+  git clone --recurse-submodules https://github.com/tmk/tmk_keyboard.git
+  cp colemak/unimap_dreymar.c tmk_keyboard/converter/usb_usb/
+  curl -L -o tmk_keyboard/converter/usb_usb/unimap_dreymar.h \
+    https://raw.githubusercontent.com/DreymaR/BigBagKbdTrixTMK/master/_myunimaps/unimap_dreymar.h
+  cd tmk_keyboard/converter/usb_usb
+  make -f Makefile.unimap KEYMAP=dreymar CONSOLE_ENABLE=no
+  -> output: usb_usb_unimap_dreymar.hex
+  cp usb_usb_unimap_dreymar.hex ../../../colemak/usb_usb_cmk-dh-iso-angle.hex   # replace the prebuilt one
+  cd ../../..                                                                   # back to repo root
+  (run all of the above from the tech-setup repo root; don't commit tmk_keyboard/)
+  (CONSOLE_ENABLE=no is REQUIRED - otherwise too big for the chip)
+
+
+Option A - QMK Toolbox (GUI, easiest)
+  1. Install: https://github.com/qmk/qmk_toolbox/releases (.pkg) or `brew install --cask qmk-toolbox`
+  2. Open QMK Toolbox -> "Open" -> pick usb_usb_cmk-dh-iso-angle.hex. MCU = atmega32u4.
+  3. Plug Hasu into the Mac (keyboard unplugged from it is safest).
+  4. Press the small button on the Hasu -> LED goes off = bootloader mode.
+     Toolbox log should say "Atmel DFU device connected".
+  5. Click "Flash". Wait for "Flash complete". Replug the Hasu.
+
+Option B - Terminal
+  brew install dfu-programmer
+  (from the tech-setup repo root; press the Hasu button first)
+  dfu-programmer atmega32u4 erase --force
+  dfu-programmer atmega32u4 flash colemak/usb_usb_cmk-dh-iso-angle.hex
+  dfu-programmer atmega32u4 reset
+
+
+Test on the Mac before taking it to work:
+  keyboard -> Hasu -> computer. Mac input source must be plain "U.S." (or ABC).
+  Work computer must be set to plain US English keyboard layout too
+  (Canadian French/CSA -> symbols come out wrong, letters mostly OK).
+
+
+What I get
+  - Letters: Colemak-DH. ISO Angle = bottom-left row shifted one key left
+    (extra ISO key = Z, physical Z = X, X = C, C = D, V = V, physical B = Backspace)
+  - Caps: tap = Backspace, hold = Extend (arrows/nav/editing on right hand, Ctrl/Shift on left home row)
+  - Shift is sticky: tap Shift, then a letter -> Capital
+  - ScrollLock: toggles back to plain QWERTY (for colleagues / emergencies); tap again to return
+  - Extend+` types DreymaR's own email footer macro (leftover demo; edit/remove TYPESTR1 if wanted).
+    Its special character uses a Windows-only Alt+numpad code, so on a Mac that bit comes out wrong. Ignore it.
+
+
+==unsure if want:
+shift: normal hold works too?
+caps-hold: want this as backspace too?
+
+scrollock=QWERTY: good for now/getting back into Colemak.
+  later might want turn on/off extend behaviour?
+
+physical B key: want anything else instead?
+Caps+`: want anything else instead?
+
+
+might want:
+
+Fr accents, might occ type french or Quebecois colleagues
+names' François andré Hélène etc not many à or ô in QC names?
+More é bit of ç and tiny bit è??
+
+(Or shortcut rstudio things?)
+Esc - not possible shortcut bc not text entering?!
+%>% or better %.>%?? or over . prefer \(.) or d, .d?
+another |> or <-? or is.na??
+[]{}~.,
+You rank
+
+turn on CAPS how? (so rarely rarely need though...
+  except occasionally SAS variable names?)
+  liked out Shift+Caps...
+
+
+
+if ever want to see/compare to Dreymar's,
+see tag in this repo: "Dreymar"
+
+
+https://github.com/DreymaR/BigBagKbdTrixTMK
+
+only very few .hex prebuilt Dreymar
+
+ease: linux > mac > windows
+
+
+Pulled unimap_dreymar.c on 2026-Apr-11:
+https://github.com/DreymaR/BigBagKbdTrixTMK/blob/master/_myunimaps%2Funimap_dreymar.c
+
