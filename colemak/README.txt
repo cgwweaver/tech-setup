@@ -38,19 +38,71 @@ Option B - Terminal
 
 
 Test on the Mac before taking it to work:
-  keyboard -> Hasu -> computer. Mac input source must be plain "U.S." (or ABC).
-  Work computer must be set to plain US English keyboard layout too
-  (Canadian French/CSA -> symbols come out wrong, letters mostly OK).
+  keyboard -> Hasu -> computer.
+  Firmware only moves LETTERS (+Angle, B key, Extend). Symbols/numbers/punctuation come from the
+  computer's keyboard-layout setting.
+  PLAN: set the computer to plain US (English-US, or ABC on Mac). Punctuation then lands where
+        US keyboards (Dell USA etc) put it. This old keyboard (Gov of Canada bilingual ISO, pictogram
+        nav/numpad keys) has different symbols printed on some keycaps -> ignore those, touch-type.
+  OPTION: Canadian Multilingual Standard (CMS) on the computer if you want punctuation to match the
+        keycaps (and French accents built in). Feels weird, per me. Not needed.
+  Either way: with Angle the extra ISO key (CMS: ù) now types Z, so that key's own symbol is gone.
 
 
 What I get
   - Letters: Colemak-DH. ISO Angle = bottom-left row shifted one key left
     (extra ISO key = Z, physical Z = X, X = C, C = D, V = V, physical B = Backspace)
-  - Caps: tap = Backspace, hold = Extend (arrows/nav/editing on right hand, Ctrl/Shift on left home row)
+  - Caps: tap = Backspace, hold = Extend (see Extend layer below)
+    Tap must be released within 200ms to count as Backspace; longer = Extend.
+    (TMK default. DreymaR's .h says 300 but that setting never reaches the code that uses it.
+     To change: build with  OPT_DEFS="-DTAPPING_TERM=250" make -f Makefile.unimap ...)
+    Holding Backspace to repeat: tap then quickly press-and-hold Caps, or hold physical B.
+  - Caps Lock: Extend+Esc (hold Caps, tap Esc). Same again to turn off.
   - Shift is sticky: tap Shift, then a letter -> Capital
   - ScrollLock: toggles back to plain QWERTY (for colleagues / emergencies); tap again to return
   - Extend+` types DreymaR's own email footer macro (leftover demo; edit/remove TYPESTR1 if wanted).
     Its special character uses a Windows-only Alt+numpad code, so on a Mac that bit comes out wrong. Ignore it.
+
+
+Extend layer (hold Caps)
+------------------------
+  key = keycap printed (QWERTY)   dh = what the key types normally (Colemak-DH, US layout)
+  ext = what it does while Caps is held
+  Bs/E = tap Backspace, hold Extend    (E) = the Extend key itself    Shft = sticky shift
+  w = wheel, m = mouse move, Clk/Rclk/Mclk = left/right/middle click, ^ = Ctrl+
+  Mac = DreymaR email macro (ignore)    Caps = Caps Lock    Med/Web/Find/PC/Calc = media/browser/calc keys
+  Space = Enter. Others as normal. ScrLk = toggle QWERTY, PrSc/Paus as printed.
+
+key Esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12
+ext Caps Play Prev Next Stop Mute Vol- Vol+ Med  Web  Find PC   Calc
+
+key `    1    2    3    4    5    6    7    8    9    0    -    =    Bks
+ext Mac  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  Paus
+
+key Tab  Q    W    E    R    T    | Y    U    I    O    P    [    ]    \
+dh  Tab  Q    W    F    P    B    | J    L    U    Y    ;    [    ]    \
+ext Tab  Esc  wUp  Back Fwd  mUp  | PgUp Home Up   End  Del  Esc  Ins  Menu
+
+key Caps A    S    D    F    G    | H    J    K    L    ;    '    #    Ent
+dh  Bs/E A    R    S    T    G    | M    N    E    I    O    '    \    Ent
+ext (E)  Alt  wDn  Shft Ctrl mDn  | PgDn Left Down Rght Bks  Menu Fav  PrSc
+
+key Shft iso  Z    X    C    V    B    | N    M    ,    .    /    Shft
+dh  Shft Z    X    C    D    V    Bs   | K    H    ,    .    /    Shft
+ext Shft ^Z   ^X   ^C   Clk  ^V   wLf  | Rclk Mclk mLf  mRt  wRt  Shft
+
+  Mnemonic with the DH letters (the letters you actually type):
+    arrows  N E I = Left Down Right,  U = Up        (inverted T on the right hand)
+    L / Y   = Home / End,  M / J = PgDn / PgUp
+    Alt A   Shift S   Ctrl T          (left home row = A R S T)
+    Z X C V = Undo Cut Copy Paste     (same letters, with Ctrl)
+    O = Backspace,  ; = Delete        (the key where you type ;)
+  Combos (all while holding Caps):
+    S + N/I   select by char    (Shift + arrows)
+    T + N/I   jump by word      (Ctrl + arrows)
+    S+T + N/I select by word
+    T + L/Y   doc start / end   (Ctrl + Home/End)
+    Esc       Caps Lock on/off
 
 
 ==unsure if want:
