@@ -38,19 +38,53 @@ Option B - Terminal
 
 
 Test on the Mac before taking it to work:
-  keyboard -> Hasu -> computer. Mac input source must be plain "U.S." (or ABC).
-  Work computer must be set to plain US English keyboard layout too
-  (Canadian French/CSA -> symbols come out wrong, letters mostly OK).
+  keyboard -> Hasu -> computer.
+  Computer keyboard layout setting: the firmware only moves LETTERS (+ Angle + B key).
+  Symbol/number keys are untouched, so they type whatever the computer's layout says.
+  -> Set the computer to match the keycaps. My keyboard = Gov of Canada bilingual ISO
+     (Canadian Multilingual Standard, CMS; ù on the extra ISO key), so CMS on the work computer
+     = symbols match keycaps + French accents built in. Plain US also fine (letters OK, some symbols differ from keycaps).
+  Note: with Angle, the extra ISO key (ù) now types Z, so ù on that key is gone.
 
 
 What I get
   - Letters: Colemak-DH. ISO Angle = bottom-left row shifted one key left
     (extra ISO key = Z, physical Z = X, X = C, C = D, V = V, physical B = Backspace)
-  - Caps: tap = Backspace, hold = Extend (arrows/nav/editing on right hand, Ctrl/Shift on left home row)
+  - Caps: tap = Backspace, hold = Extend (see Extend layer below)
+    Tap must be released within 200ms to count as Backspace; longer = Extend.
+    (TMK default. DreymaR's .h says 300 but that setting never reaches the code that uses it.
+     To change: build with  OPT_DEFS="-DTAPPING_TERM=250" make -f Makefile.unimap ...)
+    Holding Backspace to repeat: tap then quickly press-and-hold Caps, or hold physical B.
+  - Caps Lock: Extend+Esc (hold Caps, tap Esc). Same again to turn off.
   - Shift is sticky: tap Shift, then a letter -> Capital
   - ScrollLock: toggles back to plain QWERTY (for colleagues / emergencies); tap again to return
   - Extend+` types DreymaR's own email footer macro (leftover demo; edit/remove TYPESTR1 if wanted).
     Its special character uses a Windows-only Alt+numpad code, so on a Mac that bit comes out wrong. Ignore it.
+
+
+Extend layer (hold Caps; key names = printed QWERTY keycaps)
+-----------------------------------------------------------
+  Left hand = modifiers + edit, right hand = navigation. Keep Caps held the whole time.
+
+  Esc = Caps Lock           F1-F12 = media: F1 play  F2 prev  F3 next  F4 stop
+                                            F5 mute  F6 vol-  F7 vol+  F8 media app
+                                            F9 browser home  F10 search  F11 my computer  F12 calculator
+  `   = DreymaR footer macro (ignore)   1..0 - = = F1..F12   Backspace = Pause
+
+          Q Esc      W wheel up   E browser back  R browser fwd  T mouse up
+          Y PgUp     U Home       I Up            O End          P Delete     [ Esc   ] Insert   \ Menu
+          A Alt      S wheel down D Shift         F Ctrl         G mouse down
+          H PgDn     J Left       K Down          L Right        ; Backspace  ' Menu  # browser favs  Enter PrintScreen
+  ISO key Ctrl+Z     Z Ctrl+X     X Ctrl+C        C left click   V Ctrl+V     B wheel left
+          N right click  M middle click  , mouse left  . mouse right  / wheel right
+  Space = Enter
+
+  Combos (all while holding Caps):
+    D+J/L         select by character   (Shift + arrows)
+    F+J/L         jump by word          (Ctrl + arrows)
+    D+F+J/L       select by word
+    F+U/O         start/end of document (Ctrl + Home/End)
+    ISO Z X V     undo cut copy paste on the left hand (C = left click)
 
 
 ==unsure if want:
