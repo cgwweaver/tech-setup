@@ -39,12 +39,14 @@ Option B - Terminal
 
 Test on the Mac before taking it to work:
   keyboard -> Hasu -> computer.
-  Computer keyboard layout setting: the firmware only moves LETTERS (+ Angle + B key).
-  Symbol/number keys are untouched, so they type whatever the computer's layout says.
-  -> Set the computer to match the keycaps. My keyboard = Gov of Canada bilingual ISO
-     (Canadian Multilingual Standard, CMS; ù on the extra ISO key), so CMS on the work computer
-     = symbols match keycaps + French accents built in. Plain US also fine (letters OK, some symbols differ from keycaps).
-  Note: with Angle, the extra ISO key (ù) now types Z, so ù on that key is gone.
+  Firmware only moves LETTERS (+Angle, B key, Extend). Symbols/numbers/punctuation come from the
+  computer's keyboard-layout setting.
+  PLAN: set the computer to plain US (English-US, or ABC on Mac). Punctuation then lands where
+        US keyboards (Dell USA etc) put it. This old keyboard (Gov of Canada bilingual ISO, pictogram
+        nav/numpad keys) has different symbols printed on some keycaps -> ignore those, touch-type.
+  OPTION: Canadian Multilingual Standard (CMS) on the computer if you want punctuation to match the
+        keycaps (and French accents built in). Feels weird, per me. Not needed.
+  Either way: with Angle the extra ISO key (CMS: ù) now types Z, so that key's own symbol is gone.
 
 
 What I get
@@ -62,29 +64,45 @@ What I get
     Its special character uses a Windows-only Alt+numpad code, so on a Mac that bit comes out wrong. Ignore it.
 
 
-Extend layer (hold Caps; key names = printed QWERTY keycaps)
------------------------------------------------------------
-  Left hand = modifiers + edit, right hand = navigation. Keep Caps held the whole time.
+Extend layer (hold Caps)
+------------------------
+  key = keycap printed (QWERTY)   dh = what the key types normally (Colemak-DH, US layout)
+  ext = what it does while Caps is held
+  Bs/E = tap Backspace, hold Extend    (E) = the Extend key itself    Shft = sticky shift
+  w = wheel, m = mouse move, Clk/Rclk/Mclk = left/right/middle click, ^ = Ctrl+
+  Mac = DreymaR email macro (ignore)    Caps = Caps Lock    Med/Web/Find/PC/Calc = media/browser/calc keys
+  Space = Enter. Others as normal. ScrLk = toggle QWERTY, PrSc/Paus as printed.
 
-  Esc = Caps Lock           F1-F12 = media: F1 play  F2 prev  F3 next  F4 stop
-                                            F5 mute  F6 vol-  F7 vol+  F8 media app
-                                            F9 browser home  F10 search  F11 my computer  F12 calculator
-  `   = DreymaR footer macro (ignore)   1..0 - = = F1..F12   Backspace = Pause
+key Esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12
+ext Caps Play Prev Next Stop Mute Vol- Vol+ Med  Web  Find PC   Calc
 
-          Q Esc      W wheel up   E browser back  R browser fwd  T mouse up
-          Y PgUp     U Home       I Up            O End          P Delete     [ Esc   ] Insert   \ Menu
-          A Alt      S wheel down D Shift         F Ctrl         G mouse down
-          H PgDn     J Left       K Down          L Right        ; Backspace  ' Menu  # browser favs  Enter PrintScreen
-  ISO key Ctrl+Z     Z Ctrl+X     X Ctrl+C        C left click   V Ctrl+V     B wheel left
-          N right click  M middle click  , mouse left  . mouse right  / wheel right
-  Space = Enter
+key `    1    2    3    4    5    6    7    8    9    0    -    =    Bks
+ext Mac  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  Paus
 
+key Tab  Q    W    E    R    T    | Y    U    I    O    P    [    ]    \
+dh  Tab  Q    W    F    P    B    | J    L    U    Y    ;    [    ]    \
+ext Tab  Esc  wUp  Back Fwd  mUp  | PgUp Home Up   End  Del  Esc  Ins  Menu
+
+key Caps A    S    D    F    G    | H    J    K    L    ;    '    #    Ent
+dh  Bs/E A    R    S    T    G    | M    N    E    I    O    '    \    Ent
+ext (E)  Alt  wDn  Shft Ctrl mDn  | PgDn Left Down Rght Bks  Menu Fav  PrSc
+
+key Shft iso  Z    X    C    V    B    | N    M    ,    .    /    Shft
+dh  Shft Z    X    C    D    V    Bs   | K    H    ,    .    /    Shft
+ext Shft ^Z   ^X   ^C   Clk  ^V   wLf  | Rclk Mclk mLf  mRt  wRt  Shft
+
+  Mnemonic with the DH letters (the letters you actually type):
+    arrows  N E I = Left Down Right,  U = Up        (inverted T on the right hand)
+    L / Y   = Home / End,  M / J = PgDn / PgUp
+    Alt A   Shift S   Ctrl T          (left home row = A R S T)
+    Z X C V = Undo Cut Copy Paste     (same letters, with Ctrl)
+    O = Backspace,  ; = Delete        (the key where you type ;)
   Combos (all while holding Caps):
-    D+J/L         select by character   (Shift + arrows)
-    F+J/L         jump by word          (Ctrl + arrows)
-    D+F+J/L       select by word
-    F+U/O         start/end of document (Ctrl + Home/End)
-    ISO Z X V     undo cut copy paste on the left hand (C = left click)
+    S + N/I   select by char    (Shift + arrows)
+    T + N/I   jump by word      (Ctrl + arrows)
+    S+T + N/I select by word
+    T + L/Y   doc start / end   (Ctrl + Home/End)
+    Esc       Caps Lock on/off
 
 
 ==unsure if want:
